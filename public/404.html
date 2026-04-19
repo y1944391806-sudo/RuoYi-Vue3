@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <script>
+      (function () {
+        var l = window.location
+        var base = '/RuoYi-Vue3/'
+        if (!base.endsWith('/')) base += '/'
+        var path = l.pathname
+        if (path.startsWith(base)) path = path.slice(base.length - 1)
+        var query = l.search ? l.search.slice(1) : ''
+        var hash = l.hash ? l.hash.slice(1) : ''
+        var redirect = base + '?p=' + encodeURIComponent(path) + '&q=' + encodeURIComponent(query) + '&h=' + encodeURIComponent(hash)
+        l.replace(redirect)
+      })()
+    </script>
+  </head>
+  <body></body>
+</html>

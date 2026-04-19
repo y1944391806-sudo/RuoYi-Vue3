@@ -9,6 +9,27 @@
   <link rel="icon" href="/favicon.ico">
   <title>%VITE_APP_TITLE%</title>
   <!--[if lt IE 11]><script>window.location.href='/html/ie.html';</script><![endif]-->
+  <script>
+    (function () {
+      var l = window.location
+      var params = new URLSearchParams(l.search)
+      if (!params.has('p')) return
+      var base = '/RuoYi-Vue3'
+      var p = params.get('p') || '/'
+      var q = params.get('q') || ''
+      var h = params.get('h') || ''
+      try {
+        p = decodeURIComponent(p)
+        q = decodeURIComponent(q)
+        h = decodeURIComponent(h)
+      } catch (e) {}
+      if (!p.startsWith('/')) p = '/' + p
+      var path = p === '/' ? base + '/' : base + p
+      var search = q ? '?' + q : ''
+      var hash = h ? '#' + h : ''
+      window.history.replaceState(null, '', path + search + hash)
+    })()
+  </script>
   <style>
     html,
     body,
